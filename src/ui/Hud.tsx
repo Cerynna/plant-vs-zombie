@@ -14,7 +14,6 @@ export function Hud() {
   const actions = useActions();
 
   const wave = WAVES[waveIndex];
-  const waveLabel = wave?.name ?? '—';
   const total = wave?.spawns.length ?? 0;
   const cleared = Math.max(0, waveSpawnCursor - aliveZombies);
   const progress = betweenWaves
