@@ -12,7 +12,7 @@ export function SeedBar() {
 
   return (
     <div className="seedbar">
-      {PLANT_ORDER.map((kind) => {
+      {PLANT_ORDER.map((kind, idx) => {
         const def = PLANTS[kind];
         const cd = cooldowns[kind];
         const unlocked = isPlantUnlocked(kind, waveIndex);
@@ -30,6 +30,7 @@ export function SeedBar() {
             style={{ borderColor: def.color }}
             title={title}
           >
+            <div className="seedcard__key">{idx + 1}</div>
             <div className="seedcard__emoji">{def.emoji}</div>
             <div className="seedcard__name">{def.name}</div>
             <div className="seedcard__cost">☀️ {def.cost}</div>
@@ -50,6 +51,7 @@ export function SeedBar() {
         onClick={() => actions.toggleShovel()}
         title="Pelle : retirer une plante"
       >
+        <div className="seedcard__key">S</div>
         <div className="seedcard__emoji">🧹</div>
         <div className="seedcard__name">Pelle</div>
         <div className="seedcard__cost">retirer</div>
