@@ -1,6 +1,6 @@
-import { PLANTS, PLANT_ORDER } from '../data/plants';
-import { PLANT_UNLOCK_WAVE, isPlantUnlocked } from '../data/progression';
-import { useActions, useGame } from '../store/gameStore';
+import { PLANTS, PLANT_ORDER } from '@data/plants';
+import { PLANT_UNLOCK_WAVE, isPlantUnlocked } from '@data/progression';
+import { useActions, useGame } from '@store/gameStore';
 
 export function SeedBar() {
   const sun = useGame((s) => s.sun);

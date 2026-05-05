@@ -1,8 +1,8 @@
 import { COLS, ROWS, SAVE_VERSION, SKY_SUN_INTERVAL_MS, SUN_START } from './constants';
 import type { GameState, PlantKind } from './types';
-import { PLANTS, PLANT_ORDER } from '../data/plants';
-import { isPlantUnlocked } from '../data/progression';
-import { effStartingSunBonus, emptyPassives } from '../data/passives';
+import { PLANTS, PLANT_ORDER } from '@data/plants';
+import { isPlantUnlocked } from '@data/progression';
+import { effStartingSunBonus, emptyPassives } from '@data/passives';
 
 export function createInitialState(carry?: { passivePoints: number; passives: ReturnType<typeof emptyPassives> }): GameState {
   const cooldowns = {} as Record<PlantKind, number>;

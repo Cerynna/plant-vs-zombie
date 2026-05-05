@@ -5,8 +5,8 @@ import {
   nextPassiveCost,
   passiveLevel,
   passiveMaxLevel
-} from '../data/passives';
-import { useActions, useGame } from '../store/gameStore';
+} from '@data/passives';
+import { useActions, useGame } from '@store/gameStore';
 
 export function PassivePanel() {
   const [open, setOpen] = useState(false);

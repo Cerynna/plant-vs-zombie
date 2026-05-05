@@ -1,5 +1,5 @@
-import { useActions, useGame } from '../store/gameStore';
-import { WAVES } from '../data/waves';
+import { useActions, useGame } from '@store/gameStore';
+import { WAVES } from '@data/waves';
 import { PassivePanel } from './PassivePanel';
 
 export function Hud() {

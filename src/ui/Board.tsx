@@ -1,7 +1,7 @@
-import { COLS, ROWS } from '../engine/constants';
-import { PLANTS } from '../data/plants';
-import { ZOMBIES } from '../data/zombies';
-import { useActions, useGame } from '../store/gameStore';
+import { COLS, ROWS } from '@engine/constants';
+import { PLANTS } from '@data/plants';
+import { ZOMBIES } from '@data/zombies';
+import { useActions, useGame } from '@store/gameStore';
 
 export function Board() {
   const plants = useGame((s) => s.plants);

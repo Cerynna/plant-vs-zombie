@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
-import { useActions, useGame } from '../store/gameStore';
-import { TICK_MS } from '../engine/constants';
+import { useActions, useGame } from '@store/gameStore';
+import { TICK_MS } from '@engine/constants';
 import { Board } from './Board';
 import { Hud } from './Hud';
 import { SeedBar } from './SeedBar';

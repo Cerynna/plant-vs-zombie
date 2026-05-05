@@ -1,4 +1,4 @@
-import { useActions, useGame } from '../store/gameStore';
+import { useActions, useGame } from '@store/gameStore';
 
 export function Overlay() {
   const status = useGame((s) => s.status);

@@ -1,11 +1,11 @@
 import { create } from 'zustand';
-import { PLANTS } from '../data/plants';
-import { nextPassiveCost, passiveLevel, passiveMaxLevel } from '../data/passives';
-import { isPlantUnlocked } from '../data/progression';
-import { SAVE_KEY, SAVE_VERSION } from '../engine/constants';
-import { canPlace, createInitialState } from '../engine/state';
-import { tick as runTick } from '../engine/tick';
-import type { GameState, PassiveId, PlantKind } from '../engine/types';
+import { PLANTS } from '@data/plants';
+import { nextPassiveCost, passiveLevel, passiveMaxLevel } from '@data/passives';
+import { isPlantUnlocked } from '@data/progression';
+import { SAVE_KEY, SAVE_VERSION } from '@engine/constants';
+import { canPlace, createInitialState } from '@engine/state';
+import { tick as runTick } from '@engine/tick';
+import type { GameState, PassiveId, PlantKind } from '@engine/types';
 
 interface Actions {
   start: () => void;

@@ -1,6 +1,6 @@
-import { PLANTS } from '../data/plants';
-import { ZOMBIES } from '../data/zombies';
-import { WAVES } from '../data/waves';
+import { PLANTS } from '@data/plants';
+import { ZOMBIES } from '@data/zombies';
+import { WAVES } from '@data/waves';
 import {
   effAutoCollectMs,
   effFastMineMul,
@@ -8,7 +8,7 @@ import {
   effLongFreezeMul,
   effStrongPeaMul,
   effSunYieldMul
-} from '../data/passives';
+} from '@data/passives';
 import { COLS, PROJECTILE_SPEED, ROWS, SKY_SUN_INTERVAL_MS, SKY_SUN_VALUE } from './constants';
 import { mulberry32 } from './rng';
 import type { GameState, Zombie } from './types';
