@@ -19,20 +19,21 @@ export function SeedBar() {
         const disabled = !unlocked || cd > 0 || sun < def.cost;
         const active = selected === kind;
         const title = unlocked
-          ? `${def.name} — ${def.cost} ☀️`
+          ? `${def.name} — ${def.cost} soleil`
           : `${def.name} — débloqué à la vague ${PLANT_UNLOCK_WAVE[kind]}`;
         return (
           <button
             key={kind}
             className={`seedcard${active ? ' seedcard--active' : ''}${disabled ? ' seedcard--disabled' : ''}${!unlocked ? ' seedcard--locked' : ''}`}
+            data-kind={kind}
             onClick={() => unlocked && actions.selectPlant(active ? null : kind)}
             disabled={disabled && !active}
             style={{ borderColor: def.color }}
             title={title}
           >
-            <div className="seedcard__emoji">{def.emoji}</div>
+            <span className={`seedcard__sprite seedcard__sprite--${kind}`} aria-hidden="true" />
             <div className="seedcard__name">{def.name}</div>
-            <div className="seedcard__cost">☀️ {def.cost}</div>
+            <div className="seedcard__cost">SUN {def.cost}</div>
             {cd > 0 && unlocked && (
               <div
                 className="seedcard__cd"
@@ -40,7 +41,7 @@ export function SeedBar() {
               />
             )}
             {!unlocked && (
-              <div className="seedcard__lock">🔒 V{PLANT_UNLOCK_WAVE[kind]}</div>
+              <div className="seedcard__lock">LOCK V{PLANT_UNLOCK_WAVE[kind]}</div>
             )}
           </button>
         );
@@ -50,7 +51,7 @@ export function SeedBar() {
         onClick={() => actions.toggleShovel()}
         title="Pelle : retirer une plante"
       >
-        <div className="seedcard__emoji">🧹</div>
+        <span className="seedcard__sprite seedcard__sprite--shovel" aria-hidden="true" />
         <div className="seedcard__name">Pelle</div>
         <div className="seedcard__cost">retirer</div>
       </button>

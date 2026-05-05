@@ -43,7 +43,7 @@ export function App() {
         </div>
       </main>
       <footer className="app__footer">
-        <small>État sauvegardé automatiquement dans localStorage.</small>
+        <small>Créé par Cerynna</small>
       </footer>
     </div>
   );

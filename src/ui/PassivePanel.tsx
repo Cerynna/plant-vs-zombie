@@ -50,9 +50,9 @@ export function PassivePanel() {
             onClick={(e) => e.stopPropagation()}
           >
             <header className="passive-panel__header">
-              <h2>🌳 Arbre des passifs</h2>
+              <h2>Arbre des passifs</h2>
               <div className="passive-panel__points">Points : {points}</div>
-              <button onClick={handleClose}>✕</button>
+              <button onClick={handleClose}>Fermer</button>
             </header>
             <p className="passive-panel__hint">
               Tu gagnes 1 point par vague terminée. Les passifs sont conservés

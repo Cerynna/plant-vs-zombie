@@ -13,31 +13,31 @@ export function Overlay() {
 
   switch (status) {
     case 'idle':
-      title = '🌱 Prêt à défendre la maison';
+      title = 'Pret a defendre la maison';
       body = 'Récolte du soleil, plante tes défenses, survis aux 3 vagues.';
-      cta = '▶ Démarrer';
+      cta = 'Demarrer';
       break;
     case 'paused':
-      title = '⏸ Pause';
+      title = 'Pause';
       body = 'Reprends quand tu veux. La partie est sauvegardée.';
-      cta = '▶ Reprendre';
+      cta = 'Reprendre';
       onClick = () => actions.resume();
       break;
     case 'won':
-      title = '🏆 Victoire !';
+      title = 'Victoire';
       body = 'Tu as repoussé toutes les vagues. Bravo.';
-      cta = '↻ Rejouer';
+      cta = 'Rejouer';
       break;
     case 'lost':
-      title = '💀 Défaite';
+      title = 'Defaite';
       body = 'Les zombies sont entrés dans la maison.';
-      cta = '↻ Rejouer';
+      cta = 'Rejouer';
       break;
   }
 
   return (
     <div className="overlay">
-      <div className="overlay__panel">
+      <div className={`overlay__panel overlay__panel--${status}`}>
         <h2>{title}</h2>
         <p>{body}</p>
         <button onClick={onClick}>{cta}</button>

@@ -3,6 +3,13 @@ import { PLANTS } from '@data/plants';
 import { ZOMBIES } from '@data/zombies';
 import { useActions, useGame } from '@store/gameStore';
 
+function hpClass(hp: number, maxHp: number): string {
+  const pct = hp / maxHp;
+  if (pct < 0.25) return ' entity--hp-low';
+  if (pct < 0.5)  return ' entity--hp-mid';
+  return '';
+}
+
 export function Board() {
   const plants = useGame((s) => s.plants);
   const zombies = useGame((s) => s.zombies);
@@ -42,7 +49,7 @@ export function Board() {
             className="lawnmower"
             style={{ top: `calc(${row} * var(--cell))` }}
           >
-            ❤️
+            <span className="lawnmower__sprite" aria-hidden="true" />
           </div>
         ) : null
       )}
@@ -53,15 +60,15 @@ export function Board() {
         return (
           <div
             key={p.id}
-            className="entity entity--plant"
+            className={`entity entity--plant${hpClass(p.hp, def.maxHp)}`}
+            data-kind={p.kind}
             style={{
               left: `calc(${p.col} * var(--cell))`,
-              top: `calc(${p.row} * var(--cell))`,
-              background: def.color
+              top: `calc(${p.row} * var(--cell))`
             }}
             title={`${def.name} HP ${Math.ceil(p.hp)}/${def.maxHp}`}
           >
-            <span className="entity__emoji">{def.emoji}</span>
+            <span className={`entity__sprite entity__sprite--${p.kind}`} aria-hidden="true" />
             <div
               className="hpbar"
               style={{ ['--hp' as any]: `${Math.max(0, Math.min(100, (p.hp / def.maxHp) * 100))}%` }}
@@ -76,15 +83,15 @@ export function Board() {
         return (
           <div
             key={z.id}
-            className={`entity entity--zombie${z.slowMs > 0 ? ' entity--slow' : ''}`}
+            className={`entity entity--zombie${z.slowMs > 0 ? ' entity--slow' : ''}${hpClass(z.hp, def.maxHp)}`}
+            data-kind={z.kind}
             style={{
               left: `calc(${z.x} * var(--cell))`,
-              top: `calc(${z.row} * var(--cell))`,
-              background: def.color
+              top: `calc(${z.row} * var(--cell))`
             }}
             title={`${def.name} HP ${Math.ceil(z.hp)}/${def.maxHp}`}
           >
-            <span className="entity__emoji">{def.emoji}</span>
+            <span className={`entity__sprite entity__sprite--${z.kind}`} aria-hidden="true" />
             <div
               className="hpbar"
               style={{ ['--hp' as any]: `${Math.max(0, Math.min(100, (z.hp / def.maxHp) * 100))}%` }}
@@ -120,7 +127,7 @@ export function Board() {
           }}
           title={`+${s.value} soleil`}
         >
-          ☀️
+          <span className="suntoken__sprite" aria-hidden="true" />
         </button>
       ))}
 

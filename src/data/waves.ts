@@ -1,4 +1,4 @@
-import type { WaveDef, WaveSpawn, ZombieKind } from '../engine/types';
+import type { WaveDef, WaveSpawn, ZombieKind } from "../engine/types";
 
 const TOTAL_WAVES = 100;
 
@@ -19,15 +19,20 @@ function rng(seed: number): () => number {
  * Weight is multiplied by a per-wave tier curve so newer kinds gradually
  * dominate older ones as the run progresses.
  */
-const ZOMBIE_POOL: Array<{ kind: ZombieKind; unlock: number; weight: number; tier: number }> = [
-  { kind: 'normal',     unlock: 1,  weight: 10, tier: 1 },
-  { kind: 'cone',       unlock: 3,  weight: 6,  tier: 1 },
-  { kind: 'bucket',     unlock: 8,  weight: 5,  tier: 2 },
-  { kind: 'runner',     unlock: 13, weight: 4,  tier: 2 },
-  { kind: 'pole',       unlock: 20, weight: 4,  tier: 3 },
-  { kind: 'dancer',     unlock: 28, weight: 3,  tier: 3 },
-  { kind: 'gargantuan', unlock: 38, weight: 1,  tier: 4 },
-  { kind: 'brain',      unlock: 60, weight: 2,  tier: 4 }
+const ZOMBIE_POOL: Array<{
+  kind: ZombieKind;
+  unlock: number;
+  weight: number;
+  tier: number;
+}> = [
+  { kind: "normal", unlock: 1, weight: 10, tier: 1 },
+  { kind: "cone", unlock: 3, weight: 6, tier: 1 },
+  { kind: "bucket", unlock: 8, weight: 5, tier: 2 },
+  { kind: "runner", unlock: 13, weight: 4, tier: 2 },
+  { kind: "pole", unlock: 20, weight: 4, tier: 3 },
+  { kind: "dancer", unlock: 28, weight: 3, tier: 3 },
+  { kind: "gargantuan", unlock: 38, weight: 1, tier: 4 },
+  { kind: "brain", unlock: 60, weight: 2, tier: 4 },
 ];
 
 function pickKind(r: () => number, waveId: number): ZombieKind {
@@ -71,31 +76,41 @@ function generateWave(id: number): WaveDef {
 
   // Boss waves: guarantee a gargantuan once unlocked.
   if (isMilestone && id >= 40) {
-    spawns.push({ at: Math.round(t + 1200), kind: 'gargantuan' });
+    spawns.push({ at: Math.round(t + 1200), kind: "gargantuan" });
   }
 
   // Tier label for the wave name.
-  const tierLabel =
-    id >= 60 ? 'Apocalypse' :
-    id >= 38 ? 'En furie' :
-    id >= 20 ? 'Très énervés' :
-    id >= 8  ? 'Énervés' :
-    'Sortie de tombe';
+  // const tierLabel =
+  //   id >= 60
+  //     ? "Apocalypse"
+  //     : id >= 38
+  //       ? "En furie"
+  //       : id >= 20
+  //         ? "Très énervés"
+  //         : id >= 8
+  //           ? "Énervés"
+  //           : "Sortie de tombe";
 
-  const name = isFinal
-    ? 'Vague finale — Apocalypse'
-    : isMilestone
-      ? `Vague ${id} — Horde · ${tierLabel}`
-      : `Vague ${id} · ${tierLabel}`;
+  const name = `Vague ${id}`;
+
+  // const name = isFinal
+  //   ? 'Vague finale — Apocalypse'
+  //   : isMilestone
+  //     ? `Vague ${id} — Horde · ${tierLabel}`
+  //     : `Vague ${id} · ${tierLabel}`;
 
   return {
     id,
     name,
-    postDelayMs: isFinal ? 0 : isMilestone ? 18000 : Math.max(5000, 14000 - id * 100),
-    spawns
+    postDelayMs: isFinal
+      ? 0
+      : isMilestone
+        ? 18000
+        : Math.max(5000, 14000 - id * 100),
+    spawns,
   };
 }
 
 export const WAVES: WaveDef[] = Array.from({ length: TOTAL_WAVES }, (_, i) =>
-  generateWave(i + 1)
+  generateWave(i + 1),
 );

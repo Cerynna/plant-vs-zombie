@@ -25,12 +25,15 @@ export function Hud() {
 
   return (
     <div className="hud">
-      <div className="hud__sun" title="Soleil">☀️ {sun}</div>
+      <div className="hud__sun" title="Soleil">
+        <span className="hud__sun-icon" aria-hidden="true" />
+        <span>{sun}</span>
+      </div>
       <div className="hud__wave">
         <div className="hud__wave-label">
           {betweenWaves
             ? `Pause inter-vague : ${(betweenWavesTimer / 1000).toFixed(1)}s`
-            : `${waveLabel} (${waveIndex + 1}/${WAVES.length}) — ${cleared}/${total}`}
+            : `${waveLabel}`}
         </div>
         <div className="progress" title="Progression de la vague">
           <div
