@@ -57,7 +57,7 @@ export function App() {
 
   return (
     <div className="app">
-      <header className="app__header">
+      <header className="nes-container is-dark app__header">
         <Hud />
       </header>
       <main className="app__main">

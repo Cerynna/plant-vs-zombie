@@ -37,10 +37,10 @@ export function Overlay() {
 
   return (
     <div className="overlay">
-      <div className="overlay__panel">
+      <div className="nes-container is-dark overlay__panel">
         <h2>{title}</h2>
         <p>{body}</p>
-        <button onClick={onClick}>{cta}</button>
+        <button className="nes-btn is-primary" onClick={onClick}>{cta}</button>
       </div>
     </div>
   );

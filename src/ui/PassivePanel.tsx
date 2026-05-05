@@ -37,7 +37,7 @@ export function PassivePanel() {
   return (
     <>
       <button
-        className={`hud__passive${points > 0 ? ' hud__passive--ready' : ''}`}
+        className={`nes-btn${points > 0 ? ' is-success hud__passive--ready' : ''}`}
         onClick={handleOpen}
         title="Passifs"
       >
@@ -46,13 +46,13 @@ export function PassivePanel() {
       {open && (
         <div className="modal" onClick={handleClose}>
           <div
-            className="modal__panel passive-panel"
+            className="nes-container is-dark modal__panel passive-panel"
             onClick={(e) => e.stopPropagation()}
           >
             <header className="passive-panel__header">
-              <h2>🌳 Arbre des passifs</h2>
+              <h2 className="passive-panel__title">🌳 Arbre de talents</h2>
               <div className="passive-panel__points">Points : {points}</div>
-              <button onClick={handleClose}>✕</button>
+              <button className="nes-btn is-error" onClick={handleClose}>✕</button>
             </header>
             <p className="passive-panel__hint">
               Tu gagnes 1 point par vague terminée. Les passifs sont conservés
@@ -86,7 +86,7 @@ export function PassivePanel() {
                     <button
                       onClick={() => actions.buyPassive(id)}
                       disabled={!canBuy}
-                      className="passive-card__buy"
+                      className={`nes-btn passive-card__buy${canBuy ? ' is-primary' : ''}`}
                     >
                       {cost == null
                         ? 'Niveau max'

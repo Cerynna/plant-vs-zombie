@@ -11,7 +11,7 @@ export function SeedBar() {
   const actions = useActions();
 
   return (
-    <div className="seedbar">
+    <div className="nes-container is-dark seedbar">
       {PLANT_ORDER.map((kind, idx) => {
         const def = PLANTS[kind];
         const cd = cooldowns[kind];
@@ -32,7 +32,6 @@ export function SeedBar() {
           >
             <div className="seedcard__key">{idx + 1}</div>
             <div className="seedcard__emoji">{def.emoji}</div>
-            <div className="seedcard__name">{def.name}</div>
             <div className="seedcard__cost">☀️ {def.cost}</div>
             {cd > 0 && unlocked && (
               <div
@@ -53,7 +52,6 @@ export function SeedBar() {
       >
         <div className="seedcard__key">S</div>
         <div className="seedcard__emoji">🧹</div>
-        <div className="seedcard__name">Pelle</div>
         <div className="seedcard__cost">retirer</div>
       </button>
     </div>
