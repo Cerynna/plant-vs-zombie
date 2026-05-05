@@ -1,0 +1,11 @@
+export const ROWS = 5;
+export const COLS = 9;
+export const TICK_MS = 100; // 10 ticks per second
+export const SUN_START = 100;
+export const SUN_PASSIVE_INTERVAL_MS = 8000; // sunflower-like passive trickle is via plants only; this is sky sun
+export const SKY_SUN_INTERVAL_MS = 10000;
+export const SKY_SUN_VALUE = 25;
+export const LAWNMOWER_SPEED = 8; // cells per second
+export const PROJECTILE_SPEED = 4; // cells per second
+export const SAVE_KEY = 'pvz-react-mvp:v1';
+export const SAVE_VERSION = 1;
